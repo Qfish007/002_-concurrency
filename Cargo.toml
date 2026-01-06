@@ -6,3 +6,5 @@ license = "MIT"      # 添加这一行
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 authors = ["Qfish007 <506175003@qq.com>"]
 [dependencies]
+anyhow = "1.0.100"
+rand = "0.8.5"
