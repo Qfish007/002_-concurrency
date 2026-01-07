@@ -17,7 +17,7 @@
 # 14. git branch -d branch_name // 删除分支
 # 15. git branch -D branch_name // 强制删除分支
 # 16. git push origin --delete branch_name // 删除远程分支
-# 17. git stash // 暂存当前工作区
+# 17. git stash // 暂存当前工作区'''
 # 18. git stash pop // 恢复暂存的工作区
 # 19. git stash list // 查看暂存的工作区列表
 # 20. git stash apply stash@{n} // 恢复指定的暂存的工作区

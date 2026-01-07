@@ -104,6 +104,7 @@ mod tests {
         assert_eq!(c.row, 2);
         assert_eq!(c.data, vec![7, 10, 15, 22]);
         assert_eq!(format!("{:?}", c), "Matrix(row=2, col=2, {7 10, 15 22})");
+        println!("c: {}", c);
         Ok(())
     }
 }
