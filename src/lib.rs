@@ -1,14 +1,3 @@
-#![allow(unused)]
-fn test() {
-    println!("Hello, world!！");
-}
+mod matrix;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_test() {
-        test();
-    }
-}
+pub use matrix::{multiply, Matrix};

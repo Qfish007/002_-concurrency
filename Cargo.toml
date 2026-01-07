@@ -1,5 +1,5 @@
 [package]
-name = "bt-template"
+name = "concurrency"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"      # 添加这一行
