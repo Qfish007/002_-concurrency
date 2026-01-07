@@ -1,3 +1,4 @@
+use crate::{dot_product, Vector};
 use anyhow::{anyhow, Result};
 use std::{
     fmt::{self, Debug, Display, Formatter},
@@ -66,9 +67,15 @@ where
 
     for i in 0..a.row {
         for j in 0..b.col {
-            for k in 0..a.col {
-                data[i * b.col + j] += a.data[i * a.col + k] * b.data[k * b.col + j];
-            }
+            let row = Vector::new(a.data[i * a.col..(i + 1) * a.col].to_vec());
+            // let col = Vector::new((0..b.row).map(|k| b.data[k * b.col + j]).collect::<Vec<_>>());
+            let col = b.data[j..]
+                .iter()
+                .step_by(b.col)
+                .cloned()
+                .collect::<Vec<_>>();
+            let col = Vector::new(col);
+            data[i * b.col + j] = dot_product(row, col)?; //
         }
     }
 
