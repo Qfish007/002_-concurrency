@@ -1,25 +1,22 @@
-use anyhow::{anyhow, Result};
+use anyhow::Result;
+use dashmap::DashMap;
 use std::collections::HashMap;
-use std::sync::{Arc, RwLock};
+use std::sync::Arc;
 
 #[derive(Debug, Clone, Default)]
 pub struct Metrics {
-    data: Arc<RwLock<HashMap<String, i64>>>,
+    data: Arc<DashMap<String, i64>>,
 }
 impl Metrics {
     pub fn new() -> Self {
         Metrics {
-            data: Arc::new(RwLock::new(HashMap::new())),
+            data: Arc::new(DashMap::new()),
         }
     }
 
     pub fn inc(&self, key: impl Into<String>) -> Result<()> {
-        let mut data = self
-            .data
-            .write()
-            .map_err(|e| anyhow!("{:?}", e.to_string()))?;
-        let counter = data.entry(key.into()).or_insert(0);
-        *counter += 1;
+        let mut data = self.data.entry(key.into()).or_insert(0);
+        *data += 1;
 
         Ok(())
     }
@@ -27,8 +24,8 @@ impl Metrics {
     pub fn snapshot(&self) -> Result<HashMap<String, i64>> {
         Ok(self
             .data
-            .read()
-            .map_err(|e| anyhow!("{:?}", e.to_string()))?
-            .clone())
+            .iter()
+            .map(|entry| (entry.key().clone(), *entry.value()))
+            .collect())
     }
 }
