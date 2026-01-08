@@ -4,12 +4,12 @@ use std::collections::HashMap;
 use std::sync::Arc;
 
 #[derive(Debug, Clone, Default)]
-pub struct Metrics {
+pub struct CmapMetrics {
     data: Arc<DashMap<String, i64>>,
 }
-impl Metrics {
+impl CmapMetrics {
     pub fn new() -> Self {
-        Metrics {
+        CmapMetrics {
             data: Arc::new(DashMap::new()),
         }
     }
