@@ -194,12 +194,12 @@ mod tests {
 
     #[test]
     fn test_matrix_display2() -> Result<()> {
-        let a = Matrix::new(vec![1, 2, 3, 4], 2, 2);
-        let b = Matrix::new(vec![1, 2, 3, 4], 2, 2);
+        let a = Matrix::new([1, 2, 3, 4], 2, 2);
+        let b = Matrix::new([1, 2, 3, 4], 2, 2);
         let c = multiply(&a, &b)?;
         assert_eq!(c.col, 2);
         assert_eq!(c.row, 2);
-        assert_eq!(c.data, vec![7, 10, 15, 22]);
+        assert_eq!(c.data, [7, 10, 15, 22]);
         assert_eq!(format!("{:?}", c), "Matrix(row=2, col=2, {7 10, 15 22})");
         println!("c: {}", c);
         Ok(())
