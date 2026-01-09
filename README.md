@@ -82,3 +82,7 @@ cargo nextest 是一个 Rust 增强测试工具。
 ```bash
 cargo install cargo-nextest --locked
 ```
+
+git remote add origin https://github.com/Qfish007/002-simple-redis.git
+git branch -M main
+git push -u origin main
